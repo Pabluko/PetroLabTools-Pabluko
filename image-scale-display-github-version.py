@@ -17,9 +17,9 @@ magnification_settings = {
 
 # Font setup
 try:
-    font = ImageFont.truetype("arial.ttf", 75)
-except:
-    font = ImageFont.load_default()
+    font = ImageFont.truetype("fonts/arial.ttf", 75)  # Load bundled Arial font
+except OSError:
+    font = ImageFont.load_default()  # fallback if font not found
 
 # Padding parameters
 padding_h = 20
@@ -105,4 +105,5 @@ if st.button("Process Images") and uploaded_files:
 
     st.success("Processing complete!")
     with open(zip_path, "rb") as f:
+
         st.download_button("Download All Processed Images", f, file_name="processed_images.zip")
